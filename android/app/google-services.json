@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "947063079977",
+    "project_id": "teodo-x",
+    "storage_bucket": "teodo-x.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947063079977:android:8cd53bcd7228772303c838",
+        "android_client_info": {
+          "package_name": "com.example.teodolito"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947063079977-pfco607t0fgehuvuh2uiheoo6t2lqf6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtS-xYIGng9BkvmjpWqkdIfuXk9hA6ECY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947063079977-pfco607t0fgehuvuh2uiheoo6t2lqf6k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "947063079977-v1a0kv8sd6jabqt12g9i98df11hc6mmq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.teodolito"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
