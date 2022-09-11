@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:teodolito/app/controllers/project_group_page.controller.dart';
 import 'package:teodolito/app/page/home/home-widgets/loading_widget.dart';
-import 'package:teodolito/app/page/project/projects_page.dart';
+import 'package:teodolito/app/page/point/point_page.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -56,12 +56,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                           subtitle: Text(projectGroupController
                               .projectGroup[index].description!),
                           trailing: IconButton(
-                            onPressed: () => Get.to(() => ProjectPage(
+                            onPressed: () => Get.to(() => PointPage(
                                 projectGroupController
                                     .projectGroup[index].id!)),
                             icon: Icon(Icons.keyboard_arrow_right),
                           ),
-                          onTap: () => Get.to(() => ProjectPage(
+                          onTap: () => Get.to(() => PointPage(
                               projectGroupController.projectGroup[index].id!)),
                         ),
                       );

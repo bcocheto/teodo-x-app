@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teodolito/app/controllers/project_group_page.controller.dart';
+import 'package:teodolito/app/controllers/projeto_page.controller.dart';
 import 'package:teodolito/app/page/home/home-widgets/home_widget.dart';
 import 'package:teodolito/app/page/navigation/navigation_drawer_widget.dart';
 
@@ -11,11 +12,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final projectGroupController = ProjectGroupPageController();
+  final projetoController = ProjetoPageController();
 
   @override
   void initState() {
-    projectGroupController.getData();
+    projetoController.getData();
     super.initState();
   }
 
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage> {
             Icons.add,
             color: Colors.blueGrey[600],
           ),
-          onPressed: () => projectGroupController.createProjectGroup(context),
+          onPressed: () => projetoController.createProjeto(context),
         ),
         drawer: const NavigationDrawerWidget(),
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:teodolito/app/controllers/point_page.controller.dart';
+import 'package:teodolito/app/controllers/ponto_page.controller.dart';
 import 'package:teodolito/app/page/home/home-widgets/loading_widget.dart';
 
 class PointPage extends StatefulWidget {
@@ -14,11 +14,11 @@ class PointPage extends StatefulWidget {
 }
 
 class _PointPageState extends State<PointPage> {
-  final pointPageController = PointPageController();
+  final pontoPageController = PontoPageController();
 
   @override
   void initState() {
-    pointPageController.getData(widget.projectId);
+    pontoPageController.getData(widget.projectId);
     super.initState();
   }
 
@@ -30,7 +30,7 @@ class _PointPageState extends State<PointPage> {
         backgroundColor: Color(0xff006494),
         actions: [
           IconButton(
-            onPressed: () => pointPageController.createPoint(context),
+            onPressed: () => pontoPageController.createPoint(context),
             icon: Icon(Icons.add),
           ),
           IconButton(
@@ -47,10 +47,10 @@ class _PointPageState extends State<PointPage> {
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.9,
         child: Observer(
-          builder: (_) => !pointPageController.loading
+          builder: (_) => !pontoPageController.loading
               ? Center(
                   child: ListView.builder(
-                    itemCount: pointPageController.points.length,
+                    itemCount: pontoPageController.ponto.length,
                     itemBuilder: (BuildContext context, int index) => Card(
                       margin: EdgeInsets.only(
                           left: 10, right: 10, top: 5, bottom: 5),
@@ -61,17 +61,17 @@ class _PointPageState extends State<PointPage> {
                           children: <Widget>[
                             IconButton(
                               onPressed: () => Get.to(() => PointPage(
-                                  pointPageController.points[index].id!)),
+                                  pontoPageController.ponto[index].id!)),
                               icon: Icon(Icons.add_chart),
                             ),
                             IconButton(
                               onPressed: () => {
-                                pointPageController.deletePoint(
-                                    pointPageController.points[index].id!,
+                                pontoPageController.deletePoint(
+                                    pontoPageController.ponto[index].id!,
                                     index),
                                 Navigator.pop(context),
-                                pointPageController.getData(pointPageController
-                                    .points[index].projectId!)
+                                pontoPageController.getData(
+                                    pontoPageController.ponto[index].projectId!)
                               },
                               icon: Icon(Icons.delete),
                             ),

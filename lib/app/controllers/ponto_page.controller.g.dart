@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'point_page.controller.dart';
+part of 'ponto_page.controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'point_page.controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$PointPageController on _PointPageControllerBase, Store {
-  final _$loadingAtom = Atom(name: '_PointPageControllerBase.loading');
+mixin _$PontoPageController on _PontoPageControllerBase, Store {
+  final _$loadingAtom = Atom(name: '_PontoPageControllerBase.loading');
 
   @override
   bool get loading {
@@ -24,23 +24,23 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
     });
   }
 
-  final _$pointsAtom = Atom(name: '_PointPageControllerBase.points');
+  final _$pontoAtom = Atom(name: '_PontoPageControllerBase.ponto');
 
   @override
-  List<Point> get points {
-    _$pointsAtom.reportRead();
-    return super.points;
+  List<dynamic> get ponto {
+    _$pontoAtom.reportRead();
+    return super.ponto;
   }
 
   @override
-  set points(List<Point> value) {
-    _$pointsAtom.reportWrite(value, super.points, () {
-      super.points = value;
+  set ponto(List<dynamic> value) {
+    _$pontoAtom.reportWrite(value, super.ponto, () {
+      super.ponto = value;
     });
   }
 
   final _$txtheightControllerAtom =
-      Atom(name: '_PointPageControllerBase.txtheightController');
+      Atom(name: '_PontoPageControllerBase.txtheightController');
 
   @override
   TextEditingController get txtheightController {
@@ -56,7 +56,7 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
   }
 
   final _$txtangleControllerAtom =
-      Atom(name: '_PointPageControllerBase.txtangleController');
+      Atom(name: '_PontoPageControllerBase.txtangleController');
 
   @override
   TextEditingController get txtangleController {
@@ -72,7 +72,7 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
   }
 
   final _$txtFiControllerAtom =
-      Atom(name: '_PointPageControllerBase.txtFiController');
+      Atom(name: '_PontoPageControllerBase.txtFiController');
 
   @override
   TextEditingController get txtFiController {
@@ -88,7 +88,7 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
   }
 
   final _$txtFmControllerAtom =
-      Atom(name: '_PointPageControllerBase.txtFmController');
+      Atom(name: '_PontoPageControllerBase.txtFmController');
 
   @override
   TextEditingController get txtFmController {
@@ -104,7 +104,7 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
   }
 
   final _$txtFsControllerAtom =
-      Atom(name: '_PointPageControllerBase.txtFsController');
+      Atom(name: '_PontoPageControllerBase.txtFsController');
 
   @override
   TextEditingController get txtFsController {
@@ -120,7 +120,7 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
   }
 
   final _$txtPointVControllerAtom =
-      Atom(name: '_PointPageControllerBase.txtPointVController');
+      Atom(name: '_PontoPageControllerBase.txtPointVController');
 
   @override
   TextEditingController get txtPointVController {
@@ -135,7 +135,7 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
     });
   }
 
-  final _$formKeyAtom = Atom(name: '_PointPageControllerBase.formKey');
+  final _$formKeyAtom = Atom(name: '_PontoPageControllerBase.formKey');
 
   @override
   GlobalKey<FormState> get formKey {
@@ -150,15 +150,15 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
     });
   }
 
-  final _$getDataAsyncAction = AsyncAction('_PointPageControllerBase.getData');
+  final _$getDataAsyncAction = AsyncAction('_PontoPageControllerBase.getData');
 
   @override
-  Future<dynamic> getData(int projectId) {
-    return _$getDataAsyncAction.run(() => super.getData(projectId));
+  Future<dynamic> getData(int projetoId) {
+    return _$getDataAsyncAction.run(() => super.getData(projetoId));
   }
 
   final _$createPointAsyncAction =
-      AsyncAction('_PointPageControllerBase.createPoint');
+      AsyncAction('_PontoPageControllerBase.createPoint');
 
   @override
   Future<dynamic> createPoint(BuildContext context) {
@@ -166,7 +166,7 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
   }
 
   final _$validateFormAndCreatePointAsyncAction =
-      AsyncAction('_PointPageControllerBase.validateFormAndCreatePoint');
+      AsyncAction('_PontoPageControllerBase.validateFormAndCreatePoint');
 
   @override
   Future<dynamic> validateFormAndCreatePoint(BuildContext context) {
@@ -175,7 +175,7 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
   }
 
   final _$deletePointAsyncAction =
-      AsyncAction('_PointPageControllerBase.deletePoint');
+      AsyncAction('_PontoPageControllerBase.deletePoint');
 
   @override
   Future<dynamic> deletePoint(int pointId, int index) {
@@ -183,18 +183,18 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
         .run(() => super.deletePoint(pointId, index));
   }
 
-  final _$_PointPageControllerBaseActionController =
-      ActionController(name: '_PointPageControllerBase');
+  final _$_PontoPageControllerBaseActionController =
+      ActionController(name: '_PontoPageControllerBase');
 
   @override
   dynamic calculate(dynamic height, dynamic angle, dynamic fi, dynamic fm,
       dynamic fs, dynamic pointV) {
-    final _$actionInfo = _$_PointPageControllerBaseActionController.startAction(
-        name: '_PointPageControllerBase.calculate');
+    final _$actionInfo = _$_PontoPageControllerBaseActionController.startAction(
+        name: '_PontoPageControllerBase.calculate');
     try {
       return super.calculate(height, angle, fi, fm, fs, pointV);
     } finally {
-      _$_PointPageControllerBaseActionController.endAction(_$actionInfo);
+      _$_PontoPageControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
@@ -202,7 +202,7 @@ mixin _$PointPageController on _PointPageControllerBase, Store {
   String toString() {
     return '''
 loading: ${loading},
-points: ${points},
+ponto: ${ponto},
 txtheightController: ${txtheightController},
 txtangleController: ${txtangleController},
 txtFiController: ${txtFiController},

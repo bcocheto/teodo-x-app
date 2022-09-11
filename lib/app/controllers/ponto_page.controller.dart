@@ -7,23 +7,23 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
-import 'package:teodolito/app/controllers/point.controller.dart';
-import 'package:teodolito/app/models/point_model.dart';
+import 'package:teodolito/app/controllers/ponto.controller.dart';
 import 'package:function_tree/function_tree.dart';
 import 'package:angles/angles.dart';
+import 'package:teodolito/app/models/ponto.model.dart';
 
-part 'point_page.controller.g.dart';
+part 'ponto_page.controller.g.dart';
 
-class PointPageController = _PointPageControllerBase with _$PointPageController;
+class PontoPageController = _PontoPageControllerBase with _$PontoPageController;
 
-abstract class _PointPageControllerBase with Store {
-  late int projectId;
+abstract class _PontoPageControllerBase with Store {
+  late int projetoId;
 
   @observable
   bool loading = false;
 
   @observable
-  List<Point> points = <Point>[];
+  List ponto = <Ponto>[];
 
   @observable
   var txtheightController = TextEditingController();
@@ -47,11 +47,11 @@ abstract class _PointPageControllerBase with Store {
   GlobalKey<FormState> formKey = GlobalKey();
 
   @action
-  Future getData(int projectId) async {
+  Future getData(int projetoId) async {
     try {
       loading = true;
-      this.projectId = projectId;
-      points = await PointController().getPointsByProjectId(projectId);
+      this.projetoId = projetoId;
+      ponto = await PontoController().getPontosByProjetoId(projetoId);
       loading = false;
     } catch (e) {
       print(e);
@@ -281,7 +281,7 @@ abstract class _PointPageControllerBase with Store {
       //   ),
       // );
 
-      getData(projectId);
+      getData(projetoId);
       Navigator.pop(context);
 
       loading = false;
@@ -292,9 +292,9 @@ abstract class _PointPageControllerBase with Store {
 
   @action
   Future deletePoint(int pointId, int index) async {
-    await PointController().delete(pointId);
+    await PontoController().delete(pointId);
 
-    points.removeAt(index);
+    ponto.removeAt(index);
   }
 }
 /**

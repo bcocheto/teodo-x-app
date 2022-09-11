@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '947063079977',
     projectId: 'teodo-x',
     storageBucket: 'teodo-x.appspot.com',
-    iosClientId: '947063079977-v1a0kv8sd6jabqt12g9i98df11hc6mmq.apps.googleusercontent.com',
-    iosBundleId: 'com.example.teodolito',
+    iosClientId:
+        '947063079977-v1a0kv8sd6jabqt12g9i98df11hc6mmq.apps.googleusercontent.com',
+    iosBundleId: 'com.example.teodo-x',
   );
 }

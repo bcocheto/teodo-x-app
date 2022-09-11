@@ -1,45 +1,45 @@
 import 'package:teodolito/app/database/database.config.dart';
-import 'package:teodolito/app/models/project.model.dart';
+import 'package:teodolito/app/models/projeto.model.dart';
 import 'package:sqflite/sqflite.dart';
 
-class ProjectController {
+class ProjetoController {
   DatabaseConfig databaseConfig = DatabaseConfig();
 
-  Future<List<Project>> index() async {
+  Future<List<Projeto>> index() async {
     Database db = await databaseConfig.getDatabase();
     List<Map<String, dynamic>> maps =
-        await db.query('projects', orderBy: 'id ASC');
+        await db.query('projeto', orderBy: 'id ASC');
 
     return List.generate(maps.length, (index) {
-      return Project(
+      return Projeto(
         id: maps[index]['id'],
-        projectTitle: maps[index]['project_title'],
-        groupId: maps[index]['group_id'],
+        nome: maps[index]['nome'],
+        descricao: maps[index]['descricao'],
       );
     });
   }
 
-  Future<List<Project>> getProjectsByGroupId(int groupId) async {
+  Future<List<Projeto>> getPointsByProjectId(int id) async {
     Database db = await databaseConfig.getDatabase();
     List<Map<String, dynamic>> maps =
-        await db.query('projects', where: 'group_id = ?', whereArgs: [groupId]);
+        await db.query('projeto', where: 'id = ?', whereArgs: [id]);
 
     return List.generate(
       maps.length,
-      (index) => Project(
+      (index) => Projeto(
         id: maps[index]['id'],
-        projectTitle: maps[index]['project_title'],
-        groupId: maps[index]['group_id'],
+        nome: maps[index]['nome'],
+        descricao: maps[index]['descricao'],
       ),
     );
   }
 
-  Future<bool> store(Project project) async {
+  Future<bool> store(Projeto projeto) async {
     Database db = await databaseConfig.getDatabase();
     bool success = false;
 
     try {
-      await db.insert('projects', project.toMap());
+      await db.insert('projects', projeto.toMap());
       success = true;
     } catch (e) {
       print(e);
@@ -48,10 +48,10 @@ class ProjectController {
     return success;
   }
 
-  Future<int> update(Project project) async {
+  Future<int> update(Projeto projeto) async {
     Database db = await databaseConfig.getDatabase();
-    return await db.update('projects', project.toMap(),
-        where: 'id=?', whereArgs: [project.id]);
+    return await db.update('projeto', projeto.toMap(),
+        where: 'id=?', whereArgs: [projeto.id]);
   }
 
   Future delete(int projectId) async {

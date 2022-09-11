@@ -1,5 +1,5 @@
 name: teodolito
-description: A new Flutter project.
+description: Um projeto com a intenção de proporcionar uma sobrevida ao equipamento de topografia teodolito.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -34,16 +34,17 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  flutter_modular: ^4.1.2
+  flutter_modular: ^5.0.3
   mobx: ^2.0.5
   flutter_mobx: ^2.0.2
   provider: ^6.0.1
   build_runner: ^2.1.4
   get: ^4.3.8
-  intl: 0.16.1
+  intl: ^0.17.0
   angles: ^2.1.1
   function_tree: ^0.8.12
   firebase_core: ^1.12.0
+  firebase_auth: ^3.3.8
 
 dev_dependencies:
   flutter_test:
@@ -56,7 +57,7 @@ dev_dependencies:
   # rules and activating additional ones.
   sqflite:
   mobx_codegen: ^2.0.4
-  modular_test: ^1.0.1+1
+  modular_test: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
