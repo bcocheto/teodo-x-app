@@ -39,7 +39,8 @@ class ProjetoController {
     bool success = false;
 
     try {
-      await db.insert('projects', projeto.toMap());
+      await db.insert('projeto', projeto.toMap());
+      print('projeto criado ${projeto.toMap()}');
       success = true;
     } catch (e) {
       print(e);

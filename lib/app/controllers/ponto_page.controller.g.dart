@@ -39,99 +39,175 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$txtheightControllerAtom =
-      Atom(name: '_PontoPageControllerBase.txtheightController');
+  final _$cotaAtom = Atom(name: '_PontoPageControllerBase.cota');
 
   @override
-  TextEditingController get txtheightController {
-    _$txtheightControllerAtom.reportRead();
-    return super.txtheightController;
+  num get cota {
+    _$cotaAtom.reportRead();
+    return super.cota;
   }
 
   @override
-  set txtheightController(TextEditingController value) {
-    _$txtheightControllerAtom.reportWrite(value, super.txtheightController, () {
-      super.txtheightController = value;
+  set cota(num value) {
+    _$cotaAtom.reportWrite(value, super.cota, () {
+      super.cota = value;
     });
   }
 
-  final _$txtangleControllerAtom =
-      Atom(name: '_PontoPageControllerBase.txtangleController');
+  final _$txtAlturaAtom = Atom(name: '_PontoPageControllerBase.txtAltura');
 
   @override
-  TextEditingController get txtangleController {
-    _$txtangleControllerAtom.reportRead();
-    return super.txtangleController;
+  TextEditingController get txtAltura {
+    _$txtAlturaAtom.reportRead();
+    return super.txtAltura;
   }
 
   @override
-  set txtangleController(TextEditingController value) {
-    _$txtangleControllerAtom.reportWrite(value, super.txtangleController, () {
-      super.txtangleController = value;
+  set txtAltura(TextEditingController value) {
+    _$txtAlturaAtom.reportWrite(value, super.txtAltura, () {
+      super.txtAltura = value;
     });
   }
 
-  final _$txtFiControllerAtom =
-      Atom(name: '_PontoPageControllerBase.txtFiController');
+  final _$txtNomeAtom = Atom(name: '_PontoPageControllerBase.txtNome');
 
   @override
-  TextEditingController get txtFiController {
-    _$txtFiControllerAtom.reportRead();
-    return super.txtFiController;
+  TextEditingController get txtNome {
+    _$txtNomeAtom.reportRead();
+    return super.txtNome;
   }
 
   @override
-  set txtFiController(TextEditingController value) {
-    _$txtFiControllerAtom.reportWrite(value, super.txtFiController, () {
-      super.txtFiController = value;
+  set txtNome(TextEditingController value) {
+    _$txtNomeAtom.reportWrite(value, super.txtNome, () {
+      super.txtNome = value;
     });
   }
 
-  final _$txtFmControllerAtom =
-      Atom(name: '_PontoPageControllerBase.txtFmController');
+  final _$txtDescricaoAtom =
+      Atom(name: '_PontoPageControllerBase.txtDescricao');
 
   @override
-  TextEditingController get txtFmController {
-    _$txtFmControllerAtom.reportRead();
-    return super.txtFmController;
+  TextEditingController get txtDescricao {
+    _$txtDescricaoAtom.reportRead();
+    return super.txtDescricao;
   }
 
   @override
-  set txtFmController(TextEditingController value) {
-    _$txtFmControllerAtom.reportWrite(value, super.txtFmController, () {
-      super.txtFmController = value;
+  set txtDescricao(TextEditingController value) {
+    _$txtDescricaoAtom.reportWrite(value, super.txtDescricao, () {
+      super.txtDescricao = value;
     });
   }
 
-  final _$txtFsControllerAtom =
-      Atom(name: '_PontoPageControllerBase.txtFsController');
+  final _$txtPontoVisadoAtom =
+      Atom(name: '_PontoPageControllerBase.txtPontoVisado');
 
   @override
-  TextEditingController get txtFsController {
-    _$txtFsControllerAtom.reportRead();
-    return super.txtFsController;
+  TextEditingController get txtPontoVisado {
+    _$txtPontoVisadoAtom.reportRead();
+    return super.txtPontoVisado;
   }
 
   @override
-  set txtFsController(TextEditingController value) {
-    _$txtFsControllerAtom.reportWrite(value, super.txtFsController, () {
-      super.txtFsController = value;
+  set txtPontoVisado(TextEditingController value) {
+    _$txtPontoVisadoAtom.reportWrite(value, super.txtPontoVisado, () {
+      super.txtPontoVisado = value;
     });
   }
 
-  final _$txtPointVControllerAtom =
-      Atom(name: '_PontoPageControllerBase.txtPointVController');
+  final _$txtAnguloHorizontalAtom =
+      Atom(name: '_PontoPageControllerBase.txtAnguloHorizontal');
 
   @override
-  TextEditingController get txtPointVController {
-    _$txtPointVControllerAtom.reportRead();
-    return super.txtPointVController;
+  TextEditingController get txtAnguloHorizontal {
+    _$txtAnguloHorizontalAtom.reportRead();
+    return super.txtAnguloHorizontal;
   }
 
   @override
-  set txtPointVController(TextEditingController value) {
-    _$txtPointVControllerAtom.reportWrite(value, super.txtPointVController, () {
-      super.txtPointVController = value;
+  set txtAnguloHorizontal(TextEditingController value) {
+    _$txtAnguloHorizontalAtom.reportWrite(value, super.txtAnguloHorizontal, () {
+      super.txtAnguloHorizontal = value;
+    });
+  }
+
+  final _$txtFioInferiorAtom =
+      Atom(name: '_PontoPageControllerBase.txtFioInferior');
+
+  @override
+  TextEditingController get txtFioInferior {
+    _$txtFioInferiorAtom.reportRead();
+    return super.txtFioInferior;
+  }
+
+  @override
+  set txtFioInferior(TextEditingController value) {
+    _$txtFioInferiorAtom.reportWrite(value, super.txtFioInferior, () {
+      super.txtFioInferior = value;
+    });
+  }
+
+  final _$txtFioSuperiorAtom =
+      Atom(name: '_PontoPageControllerBase.txtFioSuperior');
+
+  @override
+  TextEditingController get txtFioSuperior {
+    _$txtFioSuperiorAtom.reportRead();
+    return super.txtFioSuperior;
+  }
+
+  @override
+  set txtFioSuperior(TextEditingController value) {
+    _$txtFioSuperiorAtom.reportWrite(value, super.txtFioSuperior, () {
+      super.txtFioSuperior = value;
+    });
+  }
+
+  final _$txtFioMedioAtom = Atom(name: '_PontoPageControllerBase.txtFioMedio');
+
+  @override
+  TextEditingController get txtFioMedio {
+    _$txtFioMedioAtom.reportRead();
+    return super.txtFioMedio;
+  }
+
+  @override
+  set txtFioMedio(TextEditingController value) {
+    _$txtFioMedioAtom.reportWrite(value, super.txtFioMedio, () {
+      super.txtFioMedio = value;
+    });
+  }
+
+  final _$txtDistanciaReduzidaAtom =
+      Atom(name: '_PontoPageControllerBase.txtDistanciaReduzida');
+
+  @override
+  TextEditingController get txtDistanciaReduzida {
+    _$txtDistanciaReduzidaAtom.reportRead();
+    return super.txtDistanciaReduzida;
+  }
+
+  @override
+  set txtDistanciaReduzida(TextEditingController value) {
+    _$txtDistanciaReduzidaAtom.reportWrite(value, super.txtDistanciaReduzida,
+        () {
+      super.txtDistanciaReduzida = value;
+    });
+  }
+
+  final _$txtCotaAtom = Atom(name: '_PontoPageControllerBase.txtCota');
+
+  @override
+  TextEditingController get txtCota {
+    _$txtCotaAtom.reportRead();
+    return super.txtCota;
+  }
+
+  @override
+  set txtCota(TextEditingController value) {
+    _$txtCotaAtom.reportWrite(value, super.txtCota, () {
+      super.txtCota = value;
     });
   }
 
@@ -165,6 +241,16 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     return _$createPointAsyncAction.run(() => super.createPoint(context));
   }
 
+  final _$calculateAsyncAction =
+      AsyncAction('_PontoPageControllerBase.calculate');
+
+  @override
+  Future calculate(
+      dynamic height, dynamic angle, dynamic fi, dynamic fm, dynamic fs) {
+    return _$calculateAsyncAction
+        .run(() => super.calculate(height, angle, fi, fm, fs));
+  }
+
   final _$validateFormAndCreatePointAsyncAction =
       AsyncAction('_PontoPageControllerBase.validateFormAndCreatePoint');
 
@@ -183,32 +269,22 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
         .run(() => super.deletePoint(pointId, index));
   }
 
-  final _$_PontoPageControllerBaseActionController =
-      ActionController(name: '_PontoPageControllerBase');
-
-  @override
-  dynamic calculate(dynamic height, dynamic angle, dynamic fi, dynamic fm,
-      dynamic fs, dynamic pointV) {
-    final _$actionInfo = _$_PontoPageControllerBaseActionController.startAction(
-        name: '_PontoPageControllerBase.calculate');
-    try {
-      return super.calculate(height, angle, fi, fm, fs, pointV);
-    } finally {
-      _$_PontoPageControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
 loading: ${loading},
 ponto: ${ponto},
-txtheightController: ${txtheightController},
-txtangleController: ${txtangleController},
-txtFiController: ${txtFiController},
-txtFmController: ${txtFmController},
-txtFsController: ${txtFsController},
-txtPointVController: ${txtPointVController},
+cota: ${cota},
+txtAltura: ${txtAltura},
+txtNome: ${txtNome},
+txtDescricao: ${txtDescricao},
+txtPontoVisado: ${txtPontoVisado},
+txtAnguloHorizontal: ${txtAnguloHorizontal},
+txtFioInferior: ${txtFioInferior},
+txtFioSuperior: ${txtFioSuperior},
+txtFioMedio: ${txtFioMedio},
+txtDistanciaReduzida: ${txtDistanciaReduzida},
+txtCota: ${txtCota},
 formKey: ${formKey}
     ''';
   }

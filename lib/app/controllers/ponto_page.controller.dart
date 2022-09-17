@@ -26,22 +26,37 @@ abstract class _PontoPageControllerBase with Store {
   List ponto = <Ponto>[];
 
   @observable
-  var txtheightController = TextEditingController();
+  late num cota;
 
   @observable
-  var txtangleController = TextEditingController();
+  var txtAltura = TextEditingController();
 
   @observable
-  var txtFiController = TextEditingController();
+  var txtNome = TextEditingController();
 
   @observable
-  var txtFmController = TextEditingController();
+  var txtDescricao = TextEditingController();
 
   @observable
-  var txtFsController = TextEditingController();
+  var txtPontoVisado = TextEditingController();
 
   @observable
-  var txtPointVController = TextEditingController();
+  var txtAnguloHorizontal = TextEditingController();
+
+  @observable
+  var txtFioInferior = TextEditingController();
+
+  @observable
+  var txtFioSuperior = TextEditingController();
+
+  @observable
+  var txtFioMedio = TextEditingController();
+
+  @observable
+  var txtDistanciaReduzida = TextEditingController();
+
+  @observable
+  var txtCota = TextEditingController();
 
   @observable
   GlobalKey<FormState> formKey = GlobalKey();
@@ -56,12 +71,6 @@ abstract class _PontoPageControllerBase with Store {
     } catch (e) {
       print(e);
     }
-  }
-
-  @action
-  calculate(height, angle, fi, fm, fs, pointV) {
-    var a = '$fi - $fs / 10 * (sin($angle))'.interpret();
-    print(a);
   }
 
   @action
@@ -90,10 +99,6 @@ abstract class _PontoPageControllerBase with Store {
                                 onPressed: details.onStepContinue,
                                 child: Text('Próximo'),
                               ),
-                              TextButton(
-                                onPressed: details.onStepCancel,
-                                child: Text('Voltar'),
-                              ),
                             ],
                           );
                         },
@@ -103,11 +108,11 @@ abstract class _PontoPageControllerBase with Store {
                           });
                         },
                         onStepContinue: () {
-                          if (_currentStep < 2) {
+                          if (_currentStep < 3) {
                             setState(() {
                               _currentStep += 1;
                             });
-                            if (_currentStep == 2) {
+                            if (_currentStep > 2) {
                               showDialog(
                                 context: context,
                                 builder: (_) => StatefulBuilder(
@@ -166,16 +171,7 @@ abstract class _PontoPageControllerBase with Store {
                             content: Column(
                               children: [
                                 TextFormField(
-                                  controller: txtheightController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                      labelText: 'height do ponto'),
-                                  validator: (value) => value!.isEmpty
-                                      ? 'Digite a height do aparelho.'
-                                      : null,
-                                ),
-                                TextFormField(
-                                  controller: txtPointVController,
+                                  controller: txtPontoVisado,
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
                                       labelText: 'Ponto visado'),
@@ -184,12 +180,21 @@ abstract class _PontoPageControllerBase with Store {
                                       : null,
                                 ),
                                 TextFormField(
-                                  controller: txtangleController,
+                                  controller: txtAltura,
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                      labelText: 'Altura do ponto'),
+                                  validator: (value) => value!.isEmpty
+                                      ? 'Digite a altura do aparelho.'
+                                      : null,
+                                ),
+                                TextFormField(
+                                  controller: txtAnguloHorizontal,
                                   keyboardType: TextInputType.number,
                                   decoration:
                                       InputDecoration(labelText: 'Ângulo'),
                                   validator: (value) => value!.isEmpty
-                                      ? 'Digite o ângulo.'
+                                      ? 'Digite o ângulo horizontal.'
                                       : null,
                                 ),
                               ],
@@ -204,7 +209,7 @@ abstract class _PontoPageControllerBase with Store {
                             content: Column(
                               children: [
                                 TextFormField(
-                                  controller: txtFsController,
+                                  controller: txtFioSuperior,
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
                                     labelText: 'Fio superior',
@@ -214,7 +219,7 @@ abstract class _PontoPageControllerBase with Store {
                                       : null,
                                 ),
                                 TextFormField(
-                                  controller: txtFmController,
+                                  controller: txtFioMedio,
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
                                     labelText: 'Fio médio',
@@ -224,7 +229,7 @@ abstract class _PontoPageControllerBase with Store {
                                       : null,
                                 ),
                                 TextFormField(
-                                  controller: txtFiController,
+                                  controller: txtFioInferior,
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
                                     labelText: 'Fio inferior',
@@ -242,8 +247,29 @@ abstract class _PontoPageControllerBase with Store {
                             state: _currentStep > 2
                                 ? StepState.complete
                                 : StepState.editing,
-                            content: Container(),
+                            content: Column(
+                              children: [
+                                TextFormField(
+                                  controller: txtNome,
+                                  keyboardType: TextInputType.text,
+                                  decoration: InputDecoration(
+                                    labelText: 'Nome do ponto',
+                                  ),
+                                  validator: (value) => value!.isEmpty
+                                      ? 'Digite o nome do ponto.'
+                                      : null,
+                                ),
+                                TextFormField(
+                                  controller: txtDescricao,
+                                  keyboardType: TextInputType.text,
+                                  decoration: InputDecoration(
+                                    labelText: 'Descrição',
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
+                          Step(title: Text(''), content: Container())
                         ],
                       ),
                     ],
@@ -258,33 +284,30 @@ abstract class _PontoPageControllerBase with Store {
   }
 
   @action
+  calculate(height, angle, fi, fm, fs) async {
+    cota = '$fi - $fs / 10 * (sin($angle))'.interpret();
+    await PontoController().store(Ponto(
+      nome: txtNome.text,
+      descricao: txtDescricao.text,
+      anguloHorizontal: double.parse(txtAnguloHorizontal.text),
+      fioInferior: double.parse(txtFioInferior.text),
+      fioMedio: double.parse(txtFioMedio.text),
+      fioSuperior: double.parse(txtFioSuperior.text),
+      cota: cota,
+    ));
+    getData(projetoId);
+    print(cota);
+    return true;
+  }
+
+  @action
   Future validateFormAndCreatePoint(BuildContext context) async {
     loading = true;
     if (formKey.currentState!.validate()) {
-      calculate(
-        txtheightController.text,
-        txtangleController.text,
-        txtFiController.text,
-        txtFmController.text,
-        txtFsController.text,
-        txtPointVController.text,
-      );
-      // await PointController().store(
-      //   Point(
-      //     height: double.parse(txtheightController.text),
-      //     angle: double.parse(txtangleController.text),
-      //     fi: double.parse(txtFiController.text),
-      //     fm: double.parse(txtFmController.text),
-      //     fs: double.parse(txtFsController.text),
-      //     pointV: double.parse(txtPointVController.text),
-      //     result: 0.00,
-      //   ),
-      // );
-
-      getData(projetoId);
-      Navigator.pop(context);
-
+      calculate(txtAltura, txtAnguloHorizontal, txtFioInferior, txtFioMedio,
+          txtFioSuperior);
       loading = false;
+      Navigator.pop(context);
     } else {
       return false;
     }

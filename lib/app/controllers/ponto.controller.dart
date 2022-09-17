@@ -60,10 +60,11 @@ class PontoController {
       await db.insert('ponto', ponto.toMap());
       success = true;
       print(success);
+      print("ponto criado ${ponto.toMap()}");
     } catch (e) {
       success = false;
 
-      print(e);
+      print('Erro ao criar o ponto: ${e}');
     }
     return success;
   }

@@ -11,7 +11,7 @@ class Ponto {
   late final double? fioMedio;
   late final double? fioSuperior;
   late final double? distanciaReduzida;
-  late final double? cota;
+  late final num? cota;
 
   Ponto({
     this.id,

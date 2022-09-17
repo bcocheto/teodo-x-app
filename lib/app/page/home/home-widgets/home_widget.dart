@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:teodolito/app/controllers/project_group_page.controller.dart';
+import 'package:teodolito/app/controllers/projeto_page.controller.dart';
 import 'package:teodolito/app/page/home/home-widgets/loading_widget.dart';
 import 'package:teodolito/app/page/point/point_page.dart';
 
@@ -13,18 +13,18 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  final projectGroupController = ProjectGroupPageController();
+  final projectController = ProjetoPageController();
   @override
   void initState() {
-    projectGroupController.getData();
+    projectController.getData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (_) => !projectGroupController.loading
-          ? projectGroupController.projectGroup.isEmpty
+      builder: (_) => !projectController.loading
+          ? projectController.projeto.isEmpty
               ? Center(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
@@ -47,22 +47,20 @@ class _HomeWidgetState extends State<HomeWidget> {
                   padding:
                       EdgeInsets.only(top: 15, bottom: 15, left: 10, right: 10),
                   child: ListView.builder(
-                    itemCount: projectGroupController.projectGroup.length,
+                    itemCount: projectController.projeto.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Card(
                         child: ListTile(
-                          title: Text(projectGroupController
-                              .projectGroup[index].project_group_title!),
-                          subtitle: Text(projectGroupController
-                              .projectGroup[index].description!),
+                          title: Text(projectController.projeto[index].nome!),
+                          subtitle:
+                              Text(projectController.projeto[index].descricao!),
                           trailing: IconButton(
                             onPressed: () => Get.to(() => PointPage(
-                                projectGroupController
-                                    .projectGroup[index].id!)),
+                                projectController.projeto[index].id!)),
                             icon: Icon(Icons.keyboard_arrow_right),
                           ),
-                          onTap: () => Get.to(() => PointPage(
-                              projectGroupController.projectGroup[index].id!)),
+                          onTap: () => Get.to(() =>
+                              PointPage(projectController.projeto[index].id!)),
                         ),
                       );
                     },
