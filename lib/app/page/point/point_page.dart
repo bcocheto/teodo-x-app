@@ -19,6 +19,8 @@ class _PointPageState extends State<PointPage> {
   @override
   void initState() {
     pontoPageController.getData(widget.projectId);
+    print(
+        'pontos do projeto: ${pontoPageController.getData(widget.projectId)}');
     super.initState();
   }
 
@@ -26,16 +28,11 @@ class _PointPageState extends State<PointPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         backgroundColor: Color(0xff006494),
         actions: [
           IconButton(
             onPressed: () => pontoPageController.createPoint(context),
             icon: Icon(Icons.add),
-          ),
-          IconButton(
-            onPressed: () => {},
-            icon: Icon(Icons.delete_sweep_sharp),
           ),
           SizedBox(
             width: 25,
@@ -44,39 +41,55 @@ class _PointPageState extends State<PointPage> {
         ],
       ),
       body: Container(
-        width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.9,
         child: Observer(
           builder: (_) => !pontoPageController.loading
               ? Center(
                   child: ListView.builder(
-                    itemCount: pontoPageController.ponto.length,
+                    itemCount: pontoPageController.pontos.length,
                     itemBuilder: (BuildContext context, int index) => Card(
-                      margin: EdgeInsets.only(
-                          left: 10, right: 10, top: 5, bottom: 5),
                       child: ListTile(
-                        title: Text('valor total'),
+                        title: Text(pontoPageController.pontos[index].nome),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Distância reduzida: ${pontoPageController.pontos[index].distanciaReduzida is double ? double.parse(pontoPageController.pontos[index].distanciaReduzida.toString()).toStringAsFixed(4) : ''} m",
+                              style: TextStyle(
+                                fontSize: 10,
+                              ),
+                            ),
+                            Text(
+                              "Cota: ${pontoPageController.pontos[index].cota is double ? double.parse(pontoPageController.pontos[index].cota.toString()).toStringAsFixed(4) : ''} m",
+                              style: TextStyle(
+                                fontSize: 10,
+                              ),
+                            ),
+                            Text(
+                              "Descrição: ${pontoPageController.pontos[index].descricao}",
+                              style: TextStyle(
+                                fontSize: 10,
+                              ),
+                            ),
+                          ],
+                        ),
                         trailing: Wrap(
                           spacing: 12,
                           children: <Widget>[
                             IconButton(
                               onPressed: () => Get.to(() => PointPage(
-                                  pontoPageController.ponto[index].id!)),
+                                  pontoPageController.pontos[index].id!)),
                               icon: Icon(Icons.add_chart),
-                            ),
-                            IconButton(
-                              onPressed: () => {
-                                pontoPageController.deletePoint(
-                                    pontoPageController.ponto[index].id!,
-                                    index),
-                                Navigator.pop(context),
-                                pontoPageController.getData(
-                                    pontoPageController.ponto[index].projectId!)
-                              },
-                              icon: Icon(Icons.delete),
                             ),
                           ],
                         ),
+                        onLongPress: (() {
+                          pontoPageController.deletePoint(
+                              context,
+                              pontoPageController.pontos[index].id!,
+                              index,
+                              widget.projectId);
+                        }),
                       ),
                     ),
                   ),
@@ -87,6 +100,3 @@ class _PointPageState extends State<PointPage> {
     );
   }
 }
-/**
- *
- */

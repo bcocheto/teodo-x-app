@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
@@ -91,6 +90,62 @@ abstract class _ProjetoPageControllerBase with Store {
   }
 
   @action
+  void updateProjeto(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => StatefulBuilder(
+        builder: (BuildContext context, setState) => Container(
+          child: SingleChildScrollView(
+            child: AlertDialog(
+              title: const Text(
+                'Editar projeto',
+                style: TextStyle(fontSize: 18),
+              ),
+              content: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: txtProjetoController,
+                      decoration: InputDecoration(labelText: 'Nome'),
+                      validator: (value) =>
+                          value!.isEmpty ? 'Informe o nome do projeto' : null,
+                    ),
+                    TextFormField(
+                      controller: txtProjetoController2,
+                      decoration: InputDecoration(labelText: 'Descrição'),
+                      validator: (value) =>
+                          value!.isEmpty ? 'Informe uma descrição' : null,
+                    ),
+                  ],
+                ),
+              ),
+              actions: [
+                MaterialButton(
+                  child: Text(
+                    'Aceitar',
+                    style: TextStyle(color: Colors.blueGrey),
+                  ),
+                  onPressed: () async {
+                    await updateProject(context);
+                  },
+                ),
+                MaterialButton(
+                  child: Text(
+                    'Cancelar',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  onPressed: () => Get.back(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @action
   Future validateFormAndCreateProject(BuildContext context) async {
     if (formKey.currentState!.validate()) {
       await ProjetoController().store(Projeto(
@@ -101,6 +156,15 @@ abstract class _ProjetoPageControllerBase with Store {
 
       loading = true;
     }
+  }
+
+  @action
+  Future updateProject(BuildContext context) async {
+    // loading = true;
+    // var newProjeto = Projeto(
+    // );
+    // await ProjetoController().update(context);
+    // loading = false;
   }
 
   @action

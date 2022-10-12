@@ -6,10 +6,11 @@ part of 'ponto_page.controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$PontoPageController on _PontoPageControllerBase, Store {
-  final _$loadingAtom = Atom(name: '_PontoPageControllerBase.loading');
+  late final _$loadingAtom =
+      Atom(name: '_PontoPageControllerBase.loading', context: context);
 
   @override
   bool get loading {
@@ -24,37 +25,24 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$pontoAtom = Atom(name: '_PontoPageControllerBase.ponto');
+  late final _$pontosAtom =
+      Atom(name: '_PontoPageControllerBase.pontos', context: context);
 
   @override
-  List<dynamic> get ponto {
-    _$pontoAtom.reportRead();
-    return super.ponto;
+  List<dynamic> get pontos {
+    _$pontosAtom.reportRead();
+    return super.pontos;
   }
 
   @override
-  set ponto(List<dynamic> value) {
-    _$pontoAtom.reportWrite(value, super.ponto, () {
-      super.ponto = value;
+  set pontos(List<dynamic> value) {
+    _$pontosAtom.reportWrite(value, super.pontos, () {
+      super.pontos = value;
     });
   }
 
-  final _$cotaAtom = Atom(name: '_PontoPageControllerBase.cota');
-
-  @override
-  num get cota {
-    _$cotaAtom.reportRead();
-    return super.cota;
-  }
-
-  @override
-  set cota(num value) {
-    _$cotaAtom.reportWrite(value, super.cota, () {
-      super.cota = value;
-    });
-  }
-
-  final _$txtAlturaAtom = Atom(name: '_PontoPageControllerBase.txtAltura');
+  late final _$txtAlturaAtom =
+      Atom(name: '_PontoPageControllerBase.txtAltura', context: context);
 
   @override
   TextEditingController get txtAltura {
@@ -69,7 +57,8 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$txtNomeAtom = Atom(name: '_PontoPageControllerBase.txtNome');
+  late final _$txtNomeAtom =
+      Atom(name: '_PontoPageControllerBase.txtNome', context: context);
 
   @override
   TextEditingController get txtNome {
@@ -84,8 +73,8 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$txtDescricaoAtom =
-      Atom(name: '_PontoPageControllerBase.txtDescricao');
+  late final _$txtDescricaoAtom =
+      Atom(name: '_PontoPageControllerBase.txtDescricao', context: context);
 
   @override
   TextEditingController get txtDescricao {
@@ -100,8 +89,8 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$txtPontoVisadoAtom =
-      Atom(name: '_PontoPageControllerBase.txtPontoVisado');
+  late final _$txtPontoVisadoAtom =
+      Atom(name: '_PontoPageControllerBase.txtPontoVisado', context: context);
 
   @override
   TextEditingController get txtPontoVisado {
@@ -116,8 +105,8 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$txtAnguloHorizontalAtom =
-      Atom(name: '_PontoPageControllerBase.txtAnguloHorizontal');
+  late final _$txtAnguloHorizontalAtom = Atom(
+      name: '_PontoPageControllerBase.txtAnguloHorizontal', context: context);
 
   @override
   TextEditingController get txtAnguloHorizontal {
@@ -132,8 +121,8 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$txtFioInferiorAtom =
-      Atom(name: '_PontoPageControllerBase.txtFioInferior');
+  late final _$txtFioInferiorAtom =
+      Atom(name: '_PontoPageControllerBase.txtFioInferior', context: context);
 
   @override
   TextEditingController get txtFioInferior {
@@ -148,8 +137,8 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$txtFioSuperiorAtom =
-      Atom(name: '_PontoPageControllerBase.txtFioSuperior');
+  late final _$txtFioSuperiorAtom =
+      Atom(name: '_PontoPageControllerBase.txtFioSuperior', context: context);
 
   @override
   TextEditingController get txtFioSuperior {
@@ -164,7 +153,8 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$txtFioMedioAtom = Atom(name: '_PontoPageControllerBase.txtFioMedio');
+  late final _$txtFioMedioAtom =
+      Atom(name: '_PontoPageControllerBase.txtFioMedio', context: context);
 
   @override
   TextEditingController get txtFioMedio {
@@ -179,39 +169,25 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$txtDistanciaReduzidaAtom =
-      Atom(name: '_PontoPageControllerBase.txtDistanciaReduzida');
+  late final _$txtdistanciaReduzidaAtom = Atom(
+      name: '_PontoPageControllerBase.txtdistanciaReduzida', context: context);
 
   @override
-  TextEditingController get txtDistanciaReduzida {
-    _$txtDistanciaReduzidaAtom.reportRead();
-    return super.txtDistanciaReduzida;
+  TextEditingController get txtdistanciaReduzida {
+    _$txtdistanciaReduzidaAtom.reportRead();
+    return super.txtdistanciaReduzida;
   }
 
   @override
-  set txtDistanciaReduzida(TextEditingController value) {
-    _$txtDistanciaReduzidaAtom.reportWrite(value, super.txtDistanciaReduzida,
+  set txtdistanciaReduzida(TextEditingController value) {
+    _$txtdistanciaReduzidaAtom.reportWrite(value, super.txtdistanciaReduzida,
         () {
-      super.txtDistanciaReduzida = value;
+      super.txtdistanciaReduzida = value;
     });
   }
 
-  final _$txtCotaAtom = Atom(name: '_PontoPageControllerBase.txtCota');
-
-  @override
-  TextEditingController get txtCota {
-    _$txtCotaAtom.reportRead();
-    return super.txtCota;
-  }
-
-  @override
-  set txtCota(TextEditingController value) {
-    _$txtCotaAtom.reportWrite(value, super.txtCota, () {
-      super.txtCota = value;
-    });
-  }
-
-  final _$formKeyAtom = Atom(name: '_PontoPageControllerBase.formKey');
+  late final _$formKeyAtom =
+      Atom(name: '_PontoPageControllerBase.formKey', context: context);
 
   @override
   GlobalKey<FormState> get formKey {
@@ -226,33 +202,42 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
     });
   }
 
-  final _$getDataAsyncAction = AsyncAction('_PontoPageControllerBase.getData');
+  late final _$getDataAsyncAction =
+      AsyncAction('_PontoPageControllerBase.getData', context: context);
 
   @override
-  Future<dynamic> getData(int projetoId) {
+  Future<dynamic> getData(dynamic projetoId) {
     return _$getDataAsyncAction.run(() => super.getData(projetoId));
   }
 
-  final _$createPointAsyncAction =
-      AsyncAction('_PontoPageControllerBase.createPoint');
+  late final _$createPointAsyncAction =
+      AsyncAction('_PontoPageControllerBase.createPoint', context: context);
 
   @override
   Future<dynamic> createPoint(BuildContext context) {
     return _$createPointAsyncAction.run(() => super.createPoint(context));
   }
 
-  final _$calculateAsyncAction =
-      AsyncAction('_PontoPageControllerBase.calculate');
+  late final _$calculateDRAsyncAction =
+      AsyncAction('_PontoPageControllerBase.calculateDR', context: context);
 
   @override
-  Future calculate(
-      dynamic height, dynamic angle, dynamic fi, dynamic fm, dynamic fs) {
-    return _$calculateAsyncAction
-        .run(() => super.calculate(height, angle, fi, fm, fs));
+  Future calculateDR(dynamic angle, dynamic fi, dynamic fs) {
+    return _$calculateDRAsyncAction.run(() => super.calculateDR(angle, fi, fs));
   }
 
-  final _$validateFormAndCreatePointAsyncAction =
-      AsyncAction('_PontoPageControllerBase.validateFormAndCreatePoint');
+  late final _$calculateDNAsyncAction =
+      AsyncAction('_PontoPageControllerBase.calculateDN', context: context);
+
+  @override
+  Future calculateDN(dynamic dr, dynamic height, dynamic angle, dynamic fm) {
+    return _$calculateDNAsyncAction
+        .run(() => super.calculateDN(dr, height, angle, fm));
+  }
+
+  late final _$validateFormAndCreatePointAsyncAction = AsyncAction(
+      '_PontoPageControllerBase.validateFormAndCreatePoint',
+      context: context);
 
   @override
   Future<dynamic> validateFormAndCreatePoint(BuildContext context) {
@@ -260,21 +245,35 @@ mixin _$PontoPageController on _PontoPageControllerBase, Store {
         .run(() => super.validateFormAndCreatePoint(context));
   }
 
-  final _$deletePointAsyncAction =
-      AsyncAction('_PontoPageControllerBase.deletePoint');
+  late final _$deletePointAsyncAction =
+      AsyncAction('_PontoPageControllerBase.deletePoint', context: context);
 
   @override
-  Future<dynamic> deletePoint(int pointId, int index) {
+  Future<dynamic> deletePoint(
+      BuildContext context, dynamic pointId, dynamic index, dynamic projectId) {
     return _$deletePointAsyncAction
-        .run(() => super.deletePoint(pointId, index));
+        .run(() => super.deletePoint(context, pointId, index, projectId));
+  }
+
+  late final _$_PontoPageControllerBaseActionController =
+      ActionController(name: '_PontoPageControllerBase', context: context);
+
+  @override
+  dynamic clear() {
+    final _$actionInfo = _$_PontoPageControllerBaseActionController.startAction(
+        name: '_PontoPageControllerBase.clear');
+    try {
+      return super.clear();
+    } finally {
+      _$_PontoPageControllerBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override
   String toString() {
     return '''
 loading: ${loading},
-ponto: ${ponto},
-cota: ${cota},
+pontos: ${pontos},
 txtAltura: ${txtAltura},
 txtNome: ${txtNome},
 txtDescricao: ${txtDescricao},
@@ -283,8 +282,7 @@ txtAnguloHorizontal: ${txtAnguloHorizontal},
 txtFioInferior: ${txtFioInferior},
 txtFioSuperior: ${txtFioSuperior},
 txtFioMedio: ${txtFioMedio},
-txtDistanciaReduzida: ${txtDistanciaReduzida},
-txtCota: ${txtCota},
+txtdistanciaReduzida: ${txtdistanciaReduzida},
 formKey: ${formKey}
     ''';
   }

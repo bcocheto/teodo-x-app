@@ -9,7 +9,7 @@ class PontoController {
   Future<List<Ponto>> index() async {
     Database db = await databaseConfig.getDatabase();
     List<Map<String, dynamic>> maps =
-        await db.query('pontos', orderBy: 'id ASC');
+        await db.query('ponto', orderBy: 'id ASC');
 
     return List.generate(maps.length, (index) {
       return Ponto(

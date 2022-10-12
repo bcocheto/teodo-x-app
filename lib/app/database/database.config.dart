@@ -20,6 +20,6 @@ class DatabaseConfig {
         'CREATE TABLE IF NOT EXISTS projeto (id INTEGER PRIMARY KEY,nome TEXT NOT NULL,descricao TEXT, pontos INTEGER);');
 
     await db.execute(
-        'CREATE TABLE IF NOT EXISTS ponto (id INTEGER PRIMARY KEY,projeto_id INTEGER,ponto_visado TEXT NOT NULL, angulo_horizontal INTEGER, fio_inferior INTEGER, fio_superior INTEGER, fio_medio INTEGER, distancia_reduzida INTEGER, cota INTEGER, descricao TEXT, nome TEXT NOT NULL);');
+        'CREATE TABLE IF NOT EXISTS ponto (id INTEGER PRIMARY KEY,projeto_id INTEGER,ponto_visado TEXT NOT NULL, angulo_horizontal REAL, fio_inferior REAL, fio_superior REAL, fio_medio REAL, distancia_reduzida REAL, cota REAL, descricao TEXT, nome TEXT NOT NULL);');
   }
 }

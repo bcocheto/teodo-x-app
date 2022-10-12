@@ -12,6 +12,8 @@ import 'package:function_tree/function_tree.dart';
 import 'package:angles/angles.dart';
 import 'package:teodolito/app/models/ponto.model.dart';
 
+import '../page/point/point_page.dart';
+
 part 'ponto_page.controller.g.dart';
 
 class PontoPageController = _PontoPageControllerBase with _$PontoPageController;
@@ -23,10 +25,7 @@ abstract class _PontoPageControllerBase with Store {
   bool loading = false;
 
   @observable
-  List ponto = <Ponto>[];
-
-  @observable
-  late num cota;
+  List pontos = <Ponto>[];
 
   @observable
   var txtAltura = TextEditingController();
@@ -53,23 +52,34 @@ abstract class _PontoPageControllerBase with Store {
   var txtFioMedio = TextEditingController();
 
   @observable
-  var txtDistanciaReduzida = TextEditingController();
-
-  @observable
-  var txtCota = TextEditingController();
+  var txtdistanciaReduzida = TextEditingController();
 
   @observable
   GlobalKey<FormState> formKey = GlobalKey();
 
   @action
-  Future getData(int projetoId) async {
+  clear() {
+    txtDescricao.clear();
+    txtAltura.clear();
+    txtNome.clear();
+    txtPontoVisado.clear();
+    txtAnguloHorizontal.clear();
+    txtFioInferior.clear();
+    txtFioSuperior.clear();
+    txtFioMedio.clear();
+    txtdistanciaReduzida.clear();
+  }
+
+  @action
+  Future getData(projetoId) async {
     try {
       loading = true;
       this.projetoId = projetoId;
-      ponto = await PontoController().getPontosByProjetoId(projetoId);
+      pontos = await PontoController().getPontosByProjetoId(projetoId);
+      print('pontos: ${pontos}');
       loading = false;
     } catch (e) {
-      print(e);
+      print('Erro ao carregar pontos: ${e}');
     }
   }
 
@@ -127,7 +137,7 @@ abstract class _PontoPageControllerBase with Store {
                                         actions: [
                                           MaterialButton(
                                             child: Text(
-                                              'Aceitar',
+                                              'Sim',
                                               style: TextStyle(
                                                 color: Colors.blueGrey,
                                               ),
@@ -135,11 +145,14 @@ abstract class _PontoPageControllerBase with Store {
                                             onPressed: () async {
                                               await validateFormAndCreatePoint(
                                                   context);
+                                              Navigator.of(context,
+                                                      rootNavigator: true)
+                                                  .pop();
                                             },
                                           ),
                                           MaterialButton(
                                             child: Text(
-                                              'Cancelar',
+                                              'Não',
                                               style:
                                                   TextStyle(color: Colors.red),
                                             ),
@@ -172,7 +185,7 @@ abstract class _PontoPageControllerBase with Store {
                               children: [
                                 TextFormField(
                                   controller: txtPontoVisado,
-                                  keyboardType: TextInputType.number,
+                                  keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                       labelText: 'Ponto visado'),
                                   validator: (value) => value!.isEmpty
@@ -284,40 +297,102 @@ abstract class _PontoPageControllerBase with Store {
   }
 
   @action
-  calculate(height, angle, fi, fm, fs) async {
-    cota = '$fi - $fs / 10 * (sin($angle))'.interpret();
-    await PontoController().store(Ponto(
-      nome: txtNome.text,
-      descricao: txtDescricao.text,
-      anguloHorizontal: double.parse(txtAnguloHorizontal.text),
-      fioInferior: double.parse(txtFioInferior.text),
-      fioMedio: double.parse(txtFioMedio.text),
-      fioSuperior: double.parse(txtFioSuperior.text),
-      cota: cota,
-    ));
-    getData(projetoId);
-    print(cota);
-    return true;
+  calculateDR(angle, fi, fs) async {
+    var distanciaReduzida = '$fi - $fs / 10 * (sin($angle))'.interpret();
+    return distanciaReduzida;
+  }
+
+  @action
+  calculateDN(dr, height, angle, fm) async {
+    print('a: ${angle}');
+    var cousin = cos(angle);
+    var dn = '$dr * ($cousin) + ($height - $fm)'.interpret();
+    return dn;
   }
 
   @action
   Future validateFormAndCreatePoint(BuildContext context) async {
     loading = true;
     if (formKey.currentState!.validate()) {
-      calculate(txtAltura, txtAnguloHorizontal, txtFioInferior, txtFioMedio,
-          txtFioSuperior);
+      var distanciaReduzida = await calculateDR(
+        double.parse(txtAltura.text),
+        double.parse(txtAnguloHorizontal.text),
+        double.parse(txtFioInferior.text),
+      );
+      var diferencaNivel = await calculateDN(
+        await distanciaReduzida,
+        double.parse(txtAltura.text),
+        double.parse(txtAnguloHorizontal.text),
+        double.parse(txtFioMedio.text),
+      );
+      await PontoController().store(
+        Ponto(
+          projetoId: projetoId,
+          nome: txtNome.text,
+          descricao: txtDescricao.text,
+          pontoVisado: txtPontoVisado.text,
+          anguloHorizontal: double.parse(txtAnguloHorizontal.text),
+          fioInferior: double.parse(txtFioInferior.text),
+          fioMedio: double.parse(txtFioMedio.text),
+          fioSuperior: double.parse(txtFioSuperior.text),
+          distanciaReduzida: await distanciaReduzida,
+          cota: await diferencaNivel,
+        ),
+      );
+      getData(projetoId);
       loading = false;
-      Navigator.pop(context);
+      formKey.currentState?.reset();
+      clear();
+      Navigator.of(context, rootNavigator: true).pop();
     } else {
       return false;
     }
   }
 
   @action
-  Future deletePoint(int pointId, int index) async {
-    await PontoController().delete(pointId);
-
-    ponto.removeAt(index);
+  Future deletePoint(BuildContext context, pointId, index, projectId) async {
+    showDialog(
+      context: context,
+      builder: (_) => StatefulBuilder(
+        builder: (BuildContext context, setState) => Center(
+          child: SingleChildScrollView(
+            child: AlertDialog(
+              title: const Text(
+                'Apagar ponto?',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              actions: [
+                MaterialButton(
+                  child: Text(
+                    'Sim',
+                    style: TextStyle(
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                  onPressed: () async {
+                    await PontoController().delete(pointId);
+                    pontos.removeAt(index);
+                    setState(() {});
+                    Navigator.of(context, rootNavigator: true).pop();
+                    getData(projetoId);
+                  },
+                ),
+                MaterialButton(
+                  child: Text(
+                    'Não',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  onPressed: () => Get.back(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    //
   }
 }
 /**

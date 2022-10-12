@@ -6,10 +6,11 @@ part of 'projeto_page.controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ProjetoPageController on _ProjetoPageControllerBase, Store {
-  final _$loadingAtom = Atom(name: '_ProjetoPageControllerBase.loading');
+  late final _$loadingAtom =
+      Atom(name: '_ProjetoPageControllerBase.loading', context: context);
 
   @override
   bool get loading {
@@ -24,7 +25,8 @@ mixin _$ProjetoPageController on _ProjetoPageControllerBase, Store {
     });
   }
 
-  final _$formKeyAtom = Atom(name: '_ProjetoPageControllerBase.formKey');
+  late final _$formKeyAtom =
+      Atom(name: '_ProjetoPageControllerBase.formKey', context: context);
 
   @override
   GlobalKey<FormState> get formKey {
@@ -39,8 +41,9 @@ mixin _$ProjetoPageController on _ProjetoPageControllerBase, Store {
     });
   }
 
-  final _$txtProjetoControllerAtom =
-      Atom(name: '_ProjetoPageControllerBase.txtProjetoController');
+  late final _$txtProjetoControllerAtom = Atom(
+      name: '_ProjetoPageControllerBase.txtProjetoController',
+      context: context);
 
   @override
   TextEditingController get txtProjetoController {
@@ -56,7 +59,8 @@ mixin _$ProjetoPageController on _ProjetoPageControllerBase, Store {
     });
   }
 
-  final _$projetoAtom = Atom(name: '_ProjetoPageControllerBase.projeto');
+  late final _$projetoAtom =
+      Atom(name: '_ProjetoPageControllerBase.projeto', context: context);
 
   @override
   List<Projeto> get projeto {
@@ -71,16 +75,17 @@ mixin _$ProjetoPageController on _ProjetoPageControllerBase, Store {
     });
   }
 
-  final _$getDataAsyncAction =
-      AsyncAction('_ProjetoPageControllerBase.getData');
+  late final _$getDataAsyncAction =
+      AsyncAction('_ProjetoPageControllerBase.getData', context: context);
 
   @override
   Future<dynamic> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  final _$validateFormAndCreateProjectAsyncAction =
-      AsyncAction('_ProjetoPageControllerBase.validateFormAndCreateProject');
+  late final _$validateFormAndCreateProjectAsyncAction = AsyncAction(
+      '_ProjetoPageControllerBase.validateFormAndCreateProject',
+      context: context);
 
   @override
   Future<dynamic> validateFormAndCreateProject(BuildContext context) {
@@ -88,8 +93,16 @@ mixin _$ProjetoPageController on _ProjetoPageControllerBase, Store {
         .run(() => super.validateFormAndCreateProject(context));
   }
 
-  final _$deleteProjectAsyncAction =
-      AsyncAction('_ProjetoPageControllerBase.deleteProject');
+  late final _$updateProjectAsyncAction =
+      AsyncAction('_ProjetoPageControllerBase.updateProject', context: context);
+
+  @override
+  Future<dynamic> updateProject(BuildContext context) {
+    return _$updateProjectAsyncAction.run(() => super.updateProject(context));
+  }
+
+  late final _$deleteProjectAsyncAction =
+      AsyncAction('_ProjetoPageControllerBase.deleteProject', context: context);
 
   @override
   Future<dynamic> deleteProject(int projectId, int index) {
@@ -97,8 +110,8 @@ mixin _$ProjetoPageController on _ProjetoPageControllerBase, Store {
         .run(() => super.deleteProject(projectId, index));
   }
 
-  final _$_ProjetoPageControllerBaseActionController =
-      ActionController(name: '_ProjetoPageControllerBase');
+  late final _$_ProjetoPageControllerBaseActionController =
+      ActionController(name: '_ProjetoPageControllerBase', context: context);
 
   @override
   void createProjeto(BuildContext context) {
@@ -106,6 +119,17 @@ mixin _$ProjetoPageController on _ProjetoPageControllerBase, Store {
         .startAction(name: '_ProjetoPageControllerBase.createProjeto');
     try {
       return super.createProjeto(context);
+    } finally {
+      _$_ProjetoPageControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void updateProjeto(BuildContext context) {
+    final _$actionInfo = _$_ProjetoPageControllerBaseActionController
+        .startAction(name: '_ProjetoPageControllerBase.updateProjeto');
+    try {
+      return super.updateProjeto(context);
     } finally {
       _$_ProjetoPageControllerBaseActionController.endAction(_$actionInfo);
     }

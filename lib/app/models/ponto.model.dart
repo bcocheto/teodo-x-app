@@ -2,10 +2,10 @@ import 'dart:core';
 
 class Ponto {
   late final int? id;
-  late final int? projetoId;
-  late final String? nome;
-  late final String? descricao;
-  late final String? pontoVisado;
+  late final int projetoId;
+  late final String nome;
+  late final String descricao;
+  late final String pontoVisado;
   late final double? anguloHorizontal;
   late final double? fioInferior;
   late final double? fioMedio;
@@ -15,10 +15,10 @@ class Ponto {
 
   Ponto({
     this.id,
-    this.projetoId,
-    this.nome,
-    this.descricao,
-    this.pontoVisado,
+    required this.projetoId,
+    required this.nome,
+    required this.descricao,
+    required this.pontoVisado,
     this.anguloHorizontal,
     this.fioInferior,
     this.fioMedio,
